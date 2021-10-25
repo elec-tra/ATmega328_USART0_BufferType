@@ -531,10 +531,10 @@ _delay_loop_2(uint16_t __count)
  362:	83 cf       	rjmp	.-250    	; 0x26a <main+0x1c4>
 
 00000364 <USART0_Init>:
-
-static char serial_buffer[100];
-static char * buffer_pointer;
-
+ * ubrr: Contains desired baud rate for user.
+ *
+ * returns: It returns nothing.
+ */
 void USART0_Init(unsigned int ubrr)
 {
  364:	cf 93       	push	r28
@@ -763,7 +763,10 @@ void USART0_Init(unsigned int ubrr)
  4da:	08 95       	ret
 
 000004dc <USART0_Send_Data>:
-
+ * * _data: Pointer to incoming character array.
+ *
+ * returns: It returns nothing.
+ */
 void USART0_Send_Data( register char * _data)
 {
  4dc:	1f 93       	push	r17
@@ -792,8 +795,8 @@ void USART0_Send_Data( register char * _data)
  502:	3e 4f       	sbci	r19, 0xFE	; 254
  504:	f9 01       	movw	r30, r18
  506:	60 83       	st	Z, r22
-}
-
+ * returns: It returns nothing.
+ */
 void USART0_Send_Data( register char * _data)
 {
 	register uint8_t i = 0;
@@ -847,7 +850,10 @@ void USART0_Send_Data( register char * _data)
  556:	08 95       	ret
 
 00000558 <__vector_19>:
-
+ * transmitted.
+ *
+ * retuns: It returns nothing.
+ */
 ISR(USART_UDRE_vect)
 {
  558:	1f 92       	push	r1
@@ -937,7 +943,10 @@ ISR(USART_UDRE_vect)
  5ec:	18 95       	reti
 
 000005ee <__vector_20>:
-
+ * bytes are transmitted.
+ *
+ * retuns: It returns nothing.
+ */
 ISR(USART_TX_vect)
 {
  5ee:	1f 92       	push	r1
